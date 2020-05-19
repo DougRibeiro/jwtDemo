@@ -8,7 +8,8 @@
 		<version>1.0-SNAPSHOT</version>
 		<relativePath>../</relativePath>
 	</parent>
-	<groupId>com.doug.tutorial</groupId>
+
+
 	<artifactId>jwtdemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>jwtdemo</name>
@@ -19,14 +20,33 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.doug.tutorial</groupId>
+			<artifactId>core</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
+		<finalName>jwtDemo</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<executable>true</executable>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+
 </project>

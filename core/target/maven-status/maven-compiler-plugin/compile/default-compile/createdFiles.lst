@@ -1,0 +1,4 @@
+com/doug/tutorial/jwtdemo/core/model/AbstractEntity.class
+com/doug/tutorial/jwtdemo/core/model/Demo.class
+com/doug/tutorial/jwtdemo/core/repository/JwtRepository.class
+com/doug/tutorial/jwtdemo/core/model/Demo$DemoBuilder.class
