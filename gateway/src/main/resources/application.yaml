@@ -8,13 +8,16 @@ server:
     context-path: /gateway
 
 eureka:
-  instance:
-    prefer-ip-address: true
   client:
-    service-url:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
       defaultZone: http://localhost:8081/eureka/
-    fetch-registry: true
-    register-with-eureka: true
-
+  instance:
+    hostname: localhost
 zuul:
   sensitive-headers: Cookie
+
+logging:
+  level:
+    web: DEBUG
