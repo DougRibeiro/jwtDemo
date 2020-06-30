@@ -1,0 +1,53 @@
+{
+  "groups": [
+    {
+      "name": "jwt.config",
+      "type": "com.doug.tutorial.jwtdemo.core.property.JwtConfiguration",
+      "sourceType": "com.doug.tutorial.jwtdemo.core.property.JwtConfiguration"
+    },
+    {
+      "name": "jwt.config.header",
+      "type": "com.doug.tutorial.jwtdemo.core.property.JwtConfiguration$Header",
+      "sourceType": "com.doug.tutorial.jwtdemo.core.property.JwtConfiguration"
+    }
+  ],
+  "properties": [
+    {
+      "name": "jwt.config.expiration",
+      "type": "java.lang.Integer",
+      "sourceType": "com.doug.tutorial.jwtdemo.core.property.JwtConfiguration",
+      "defaultValue": 3600
+    },
+    {
+      "name": "jwt.config.header.name",
+      "type": "java.lang.String",
+      "sourceType": "com.doug.tutorial.jwtdemo.core.property.JwtConfiguration$Header",
+      "defaultValue": "Authorization"
+    },
+    {
+      "name": "jwt.config.header.prefix",
+      "type": "java.lang.String",
+      "sourceType": "com.doug.tutorial.jwtdemo.core.property.JwtConfiguration$Header",
+      "defaultValue": "Bearer "
+    },
+    {
+      "name": "jwt.config.key",
+      "type": "java.lang.String",
+      "sourceType": "com.doug.tutorial.jwtdemo.core.property.JwtConfiguration",
+      "defaultValue": "G5NYCfeF2khOxjfHl9oXID4JsXZfVnz9"
+    },
+    {
+      "name": "jwt.config.login-url",
+      "type": "java.lang.String",
+      "sourceType": "com.doug.tutorial.jwtdemo.core.property.JwtConfiguration",
+      "defaultValue": "\/login\/**"
+    },
+    {
+      "name": "jwt.config.type",
+      "type": "java.lang.String",
+      "sourceType": "com.doug.tutorial.jwtdemo.core.property.JwtConfiguration",
+      "defaultValue": "encrypted"
+    }
+  ],
+  "hints": []
+}
