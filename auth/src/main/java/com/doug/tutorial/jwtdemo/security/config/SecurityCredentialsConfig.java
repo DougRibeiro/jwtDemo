@@ -2,45 +2,38 @@ package com.doug.tutorial.jwtdemo.security.config;
 
 
 import com.doug.tutorial.jwtdemo.core.property.JwtConfiguration;
+import com.doug.tutorial.jwtdemo.security.filter.JWTTokenAuthorizationFilter;
 import com.doug.tutorial.jwtdemo.security.filter.JwtAuthenticationFilter;
-import lombok.RequiredArgsConstructor;
+import com.doug.tutorial.jwtdemo.security.token.TokenConverter;
+import com.doug.tutorial.jwtdemo.security.token.TokenCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.cors.CorsConfiguration;
-
-import static javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
-import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
-@RequiredArgsConstructor
-public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
-
+public class SecurityCredentialsConfig extends SecurityTokenConfig {
 
     private final UserDetailsService userDetailsService;
-    private final JwtConfiguration jwtConfiguration;
+    private final TokenCreator tokenCreator;
+    private final TokenConverter tokenConverter;
 
+    public SecurityCredentialsConfig(JwtConfiguration jwtConfiguration, UserDetailsService userDetailsService, TokenCreator tokenCreator, TokenConverter tokenConverter) {
+        super(jwtConfiguration);
+        this.userDetailsService = userDetailsService;
+        this.tokenCreator = tokenCreator;
+        this.tokenConverter = tokenConverter;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()
-                .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
-                .and()
-                .sessionManagement().sessionCreationPolicy(STATELESS)
-                .and()
-                .exceptionHandling().authenticationEntryPoint((req, resp, e) -> resp.sendError(SC_UNAUTHORIZED))
-                .and()
-                .addFilter(new JwtAuthenticationFilter())
-                .authorizeRequests()
-                .antMatchers(jwtConfiguration.getLoginUrl()).permitAll()
-                .antMatchers("v1/admin/demo/**").hasRole("ADMIN")
-                .anyRequest().authenticated();
-
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtConfiguration, tokenCreator))
+                .addFilterAfter(new JWTTokenAuthorizationFilter(jwtConfiguration, tokenConverter), UsernamePasswordAuthenticationFilter.class);
+        super.configure(http);
     }
 
     @Override
@@ -49,7 +42,7 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    private BCryptPasswordEncoder passwordEncoder() {
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }

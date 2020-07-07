@@ -1,1 +1,3 @@
+/Users/DouglasRIbeiro/Desktop/Dev/training/JwtProjectDemo/gateway/src/main/java/com/doug/tutorial/jwtdemo/gateway/security/config/SecurityConfig.java
 /Users/DouglasRIbeiro/Desktop/Dev/training/JwtProjectDemo/gateway/src/main/java/com/doug/tutorial/jwtdemo/gateway/ApplicationGateway.java
+/Users/DouglasRIbeiro/Desktop/Dev/training/JwtProjectDemo/gateway/src/main/java/com/doug/tutorial/jwtdemo/gateway/security/config/GatewayTokenAuthorizationFilter.java

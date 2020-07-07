@@ -27,7 +27,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
         log.info(String.format("Searching for user '%s'",username));
         ApplicationUser applicationUser = repository.findByUsername(username).orElseThrow(()->new UsernameNotFoundException("User Not Found!"));
         log.info(String.format("user '%s' found",applicationUser));
-        return null;
+        return new CustomUserDetails(applicationUser);
     }
     private final static class CustomUserDetails extends ApplicationUser implements UserDetails{
 

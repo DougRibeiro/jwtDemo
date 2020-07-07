@@ -1,1 +1,3 @@
+com/doug/tutorial/jwtdemo/gateway/security/config/SecurityConfig.class
 com/doug/tutorial/jwtdemo/gateway/ApplicationGateway.class
+com/doug/tutorial/jwtdemo/gateway/security/config/GatewayTokenAuthorizationFilter.class

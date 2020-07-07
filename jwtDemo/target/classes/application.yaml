@@ -27,8 +27,6 @@ eureka:
       defaultZone: http://localhost:8081/eureka/
     register-with-eureka: true
 
-
-
 logging:
   level:
     web: DEBUG

@@ -1,1 +1,5 @@
+/Users/DouglasRIbeiro/Desktop/Dev/training/JwtProjectDemo/auth/src/main/java/com/doug/tutorial/jwtdemo/controller/UserInfoController.java
+/Users/DouglasRIbeiro/Desktop/Dev/training/JwtProjectDemo/auth/src/main/java/com/doug/tutorial/jwtdemo/security/user/UserDetailServiceImpl.java
+/Users/DouglasRIbeiro/Desktop/Dev/training/JwtProjectDemo/auth/src/main/java/com/doug/tutorial/jwtdemo/security/filter/JwtAuthenticationFilter.java
+/Users/DouglasRIbeiro/Desktop/Dev/training/JwtProjectDemo/auth/src/main/java/com/doug/tutorial/jwtdemo/security/config/SecurityCredentialsConfig.java
 /Users/DouglasRIbeiro/Desktop/Dev/training/JwtProjectDemo/auth/src/main/java/com/doug/tutorial/jwtdemo/AuthApplication.java

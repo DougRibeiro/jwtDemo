@@ -1,1 +1,6 @@
 com/doug/tutorial/jwtdemo/AuthApplication.class
+com/doug/tutorial/jwtdemo/security/user/UserDetailServiceImpl.class
+com/doug/tutorial/jwtdemo/security/filter/JwtAuthenticationFilter.class
+com/doug/tutorial/jwtdemo/controller/UserInfoController.class
+com/doug/tutorial/jwtdemo/security/config/SecurityCredentialsConfig.class
+com/doug/tutorial/jwtdemo/security/user/UserDetailServiceImpl$CustomUserDetails.class
