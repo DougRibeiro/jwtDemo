@@ -2,6 +2,7 @@ package com.doug.tutorial.jwtdemo.security.config;
 
 import com.doug.tutorial.jwtdemo.core.property.JwtConfiguration;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -25,7 +26,8 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint((req, resp, e) -> resp.sendError(SC_UNAUTHORIZED))
                 .and()
                 .authorizeRequests()
-                .antMatchers(jwtConfiguration.getLoginUrl()).permitAll()
+                .antMatchers(jwtConfiguration.getLoginUrl(),"/**/swagger-ui.html").permitAll()
+                .antMatchers(HttpMethod.GET,"/**/swagger-resources/**","/**/webjars/springfox-swagger-ui/**","/**/v2/api-docs/**").permitAll()
                 .antMatchers("/v1/admin/demo/**").hasRole("ADMIN")
                 //.antMatchers("/auth/user/**").hasAnyRole("ADMIN","USER")
                 .antMatchers("/auth/user/**").permitAll()

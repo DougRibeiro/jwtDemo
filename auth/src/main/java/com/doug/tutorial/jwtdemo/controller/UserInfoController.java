@@ -1,6 +1,8 @@
 package com.doug.tutorial.jwtdemo.controller;
 
 import com.doug.tutorial.jwtdemo.core.model.ApplicationUser;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,9 +16,11 @@ import java.security.Principal;
 
 @RestController
 @RequestMapping("user")
+@Api(value = "Auth Controller")
 public class UserInfoController {
 
     @GetMapping(path = "info", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ApiOperation(value = "List User Info",response = ApplicationUser[].class)
     public ResponseEntity<ApplicationUser> getUserInfo(Principal principal) {
         ApplicationUser applicationUser = (ApplicationUser) ((UsernamePasswordAuthenticationToken) principal).getPrincipal();
         return new ResponseEntity<>(applicationUser, HttpStatus.OK);
